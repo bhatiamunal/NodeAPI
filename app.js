@@ -1,10 +1,13 @@
 const  express=require('express');
 const app = express();
-
-
 const  postRoute = require('./routes/post')
 const bodyParser = require('body-parser')
+const cors = require('cors');
+//middle ware 
+app.use(cors());
 app.use(bodyParser.json())
+
+
 app.use('/pp',postRoute);
 /*
 var mongo = require('mongoosedb');

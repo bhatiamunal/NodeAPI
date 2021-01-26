@@ -30,14 +30,42 @@ router.patch('/:id',async(req,res,)=>{
        } 
        catch(err){res.send('error'+err)}
 })
+
+router.patch('/up/:id',async(req,res,)=>{
+    try{
+        //url Link http://localhost:3000/pp/600fe042a07de639b0cf120a
+        const update = await data.updateOne({
+            _id: req.params.id     
+        },
+        {
+            $set:
+            {
+                name :req.body.name,
+                address :req.body.address
+            }
+        });
+        res.json(update)
+        
+       } 
+       catch(err){res.send('error'+err)}
+})
 //remove the data 
 router.patch('/del/:id',async(req,res,)=>{
     try{
         //url Link http://localhost:3000/pp/del/600fe042a07de639b0cf120a
         const alien = await data.findById(req.params.id);
-        
         const asp = await alien.remove();
-        res.json(asp)
+        res.json(asp);
+        
+       } 
+       catch(err){res.send('error'+err)}
+})
+
+router.delete('/:id',async(req,res,)=>{
+    try{
+        //url Link http://localhost:3000/pp/600fe042a07de639b0cf120a
+        const asp = await data.remove({ _id: req.params.id });
+        res.json(asp);
         
        } 
        catch(err){res.send('error'+err)}
