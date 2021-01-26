@@ -5,4 +5,5 @@ const Comment = new mongoose.Schema({
   
   });
 
-  module.exports = mongoose.model('mydb',Comment)
+  //mydb is  collection name in case it is not available then it will create auto matically 
+  module.exports = mongoose.model('mydb',Comment) 
